@@ -2,6 +2,16 @@ doctype html
 html
   head
     title= title
+    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    block container
+      div.container
+        block header
+          div.header
+            ul.nav.nav-pills.pull-right
+              li.active
+                a(href="#") Home
+            h3.text-muted login-system
+
+        block content
