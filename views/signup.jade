@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  form.form-signup(role="form")
+    h2.form-signup-heading Please sign up
+    input.form-control(type="text", placeholder="user id", required, autofocus)
+    input.form-control(type="password", placeholder="password", required)
+    input.form-control(type="confirm-password", placeholder="confirm password", required)
+    button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign up
