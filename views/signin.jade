@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  form.form-sign(role="form")
+    h2.form-sign-heading Please sign in
+    input.form-control(type="text", placeholder="user id", required, autofocus)
+    input.form-control(type="signin-password", placeholder="password", required)
+    button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign in
