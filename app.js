@@ -8,6 +8,7 @@ var routes = require('./routes');
 var signup = require('./routes/signup');
 var signin = require('./routes/signin');
 var top = require('./routes/top');
+var authorize = require('./routes/authorize');
 var http = require('http');
 var path = require('path');
 
@@ -32,10 +33,11 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-app.get('/signup', signup.signup);
-app.get('/signin', signin.signin);
-app.get('/top', top.top);
+app.get('/', authorize.authorize(routes.index, { successRedirect : '/top' }));
+app.get('/signup', authorize.authorize(signup.signup, { successRedirect : '/top' }));
+app.get('/signin', authorize.authorize(signin.signin, { successRedirect : '/top' }));
+app.post('/signin', signin.signin);
+app.get('/top', authorize.authorize(top.top, { failureRedirect : '/'}));
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
