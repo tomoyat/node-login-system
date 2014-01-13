@@ -42,6 +42,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', authorize.authorize(routes.index, { successRedirect : '/top' }));
 app.get('/signup', authorize.authorize(signup.signup, { successRedirect : '/top' }));
+app.post('/signup', authorize.authorize(signup.signup, { successRedirect : '/top' }));
 app.get('/signin', authorize.authorize(signin.signin, { successRedirect : '/top' }));
 app.post('/signin', signin.signin);
 app.get('/top', authorize.authorize(top.top, { failureRedirect : '/'}));
