@@ -1,5 +1,14 @@
 extends layout
 
+block header
+  div.header
+    ul.nav.nav-pills.pull-right
+      li.active
+        a(href="./top") Top
+      li
+        a(href="./logout") logout
+    h3.text-muted login-system
+
 block content
   div.jumbotron
     h1 hello

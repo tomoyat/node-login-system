@@ -13,8 +13,10 @@ exports.signin = function(req, res){
   var hashedPassword = user.hashPassword(req.body.password);
   user.signin(uid, hashedPassword, function(flg) {
     if (flg) {
-      req.session.uid = uid;
-      res.redirect('top');
+      req.session.regenerate(function(err) {
+	req.session.uid = uid;
+	res.redirect('top');
+      });
     } else {
       res.redirect('/');
     }

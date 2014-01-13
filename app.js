@@ -8,6 +8,7 @@ var routes = require('./routes');
 var signup = require('./routes/signup');
 var signin = require('./routes/signin');
 var top = require('./routes/top');
+var logout = require('./routes/logout');
 var authorize = require('./routes/authorize');
 var http = require('http');
 var path = require('path');
@@ -44,6 +45,7 @@ app.get('/signup', authorize.authorize(signup.signup, { successRedirect : '/top'
 app.get('/signin', authorize.authorize(signin.signin, { successRedirect : '/top' }));
 app.post('/signin', signin.signin);
 app.get('/top', authorize.authorize(top.top, { failureRedirect : '/'}));
+app.get('/logout', logout.logout);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
